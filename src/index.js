@@ -7,6 +7,23 @@ import Setup from './client/components/Setup'
 const app = express()
 const PORT = process.env.PORT || 3000
 
-app.get('*', (req, res) => res.send(renderToString(<Setup />)))
+app.use(express.static('public'))
+
+app.get('*', (req, res) => {
+  const content = renderToString(<Setup />)
+  const html = `
+  <html>
+    <head>
+      <title>Hi BitCine</title>
+    </head>
+    <body>
+      <div id="root">${content}</div>
+      <script src="bundle.js"></script>
+    </body>
+  </html>
+  `
+
+  res.send(html)
+})
 
 app.listen(PORT, () => console.log(`🎾 Server up on PORT:${PORT}`))
