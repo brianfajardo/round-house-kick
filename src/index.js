@@ -23,7 +23,7 @@ app.get('*', (req, res) => {
   </html>
   `
 
-  res.send(html)
+  res.status(200).send(html)
 })
 
 app.listen(PORT, () => console.log(`🎾 Server up on PORT:${PORT}`))

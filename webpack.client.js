@@ -1,25 +1,13 @@
 const path = require('path')
+const merge = require('webpack-merge')
+const commonConfig = require('./webpack.common.js')
 
-module.exports = {
+const clientConfig = {
   entry: './src/client/index.js',
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
   },
-  module: {
-    rules: [
-      {
-        test: /\.js?$/,
-        exclude: /node_modules/,
-        loaders: 'babel-loader',
-        options: {
-          presets: [
-            ['env', { targets: { browsers: ['last 2 versions'] } }],
-            'react',
-          ],
-        },
-      },
-    ],
-  },
-  devtool: 'cheap-module-eval-source-map',
 }
+
+module.exports = merge(commonConfig, clientConfig)
