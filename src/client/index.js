@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Setup from './components/Setup'
+import App from './App'
 
-ReactDOM.hydrate(<Setup />, document.getElementById('root'))
+ReactDOM.hydrate(<App />, document.getElementById('root'))

@@ -1,9 +1,9 @@
 import React from 'react'
 import { renderToString } from 'react-dom/server'
-import Setup from '../client/components/Setup'
+import App from '../client/App'
 
 const renderHtml = () => {
-  const reactContent = renderToString(<Setup />)
+  const reactContent = renderToString(<App />)
 
   return `
   <html>
