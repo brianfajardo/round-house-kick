@@ -1,11 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Search = ({ selectOptions, handleSelectOption, searchOption }) => (
+const propTypes = {
+  selectOptions: PropTypes.array,
+  searchInput: PropTypes.string,
+  searchOption: PropTypes.string,
+  handleSearchInput: PropTypes.func,
+  handleSearchOptions: PropTypes.func,
+}
+
+const Search = ({
+  selectOptions,
+  searchInput,
+  searchOption,
+  handleSearchInput,
+  handleSearchOptions,
+}) => (
   <div className="center col col-12">
     {/* Select options */}
     <select
-      onChange={handleSelectOption}
+      onChange={handleSearchOptions}
       className="select center col-2 inline"
     >
       {selectOptions.map(option => (
@@ -17,16 +31,14 @@ const Search = ({ selectOptions, handleSelectOption, searchOption }) => (
     {/* Search input */}
     <input
       type="search"
+      value={searchInput}
+      onChange={handleSearchInput}
       placeholder={`Searching by ${searchOption}`}
       className="input center col-3 inline"
     />
   </div>
 )
 
-Search.propTypes = {
-  selectOptions: PropTypes.array,
-  handleSelectOption: PropTypes.func,
-  searchOption: PropTypes.string,
-}
+Search.propTypes = propTypes
 
 export default Search

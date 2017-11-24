@@ -1,4 +1,6 @@
 import axios from 'axios'
+import shortid from 'shortid'
+import { toArray } from '../utils'
 import { FETCH_JOKES, CREATE_ENTRY } from './actionTypes'
 
 // Fetching multiple random jokes
@@ -10,7 +12,11 @@ export const fetchJokes = () => async dispatch => {
   return dispatch({ type: FETCH_JOKES, payload: request.data.value })
 }
 
-export const createEntry = joke => ({
+export const createEntry = (joke, categories) => ({
   type: CREATE_ENTRY,
-  payload: joke,
+  payload: {
+    joke,
+    id: shortid.generate(),
+    categories: toArray(categories),
+  },
 })

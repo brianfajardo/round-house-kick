@@ -12,10 +12,9 @@ export default (state = initialState, action) => {
         jokes: action.payload,
       }
     case CREATE_ENTRY:
-      console.log(action.payload)
       return {
         ...state,
-        jokes: [...action.payload, ...state.jokes],
+        jokes: [action.payload, ...state.jokes],
       }
     default:
       return state

@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom'
 // Escapes HTML entities like &quot; found in string from API.
 import { decode } from 'he'
 
+const propTypes = {
+  data: PropTypes.arrayOf(PropTypes.shape({})),
+}
+
 const Table = ({ data }) => (
   <div>
     {/* Table headers */}
@@ -33,8 +37,6 @@ const Table = ({ data }) => (
   </div>
 )
 
-Table.propTypes = {
-  data: PropTypes.array,
-}
+Table.propTypes = propTypes
 
 export default Table

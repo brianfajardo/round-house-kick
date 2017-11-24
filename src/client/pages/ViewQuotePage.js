@@ -11,14 +11,14 @@ class ViewQuotePage extends Component {
   }
 
   render() {
-    const { id, category, joke } = this.props.quote
+    const { id, categories, joke } = this.props.quote
     return (
       <div className="clearfix">
         <Link to="/" href="/" className="btn right">Delete</Link>
         {/* Quote block */}
         <div>
           <p className="ml1 mb0">ID: {id}</p>
-          <p className="ml1 mt0">Categories: {category || 'not found'}</p>
+          <p className="ml1 mt0">Categories: {categories.join(' ') || 'not found'}</p>
           <h2 className="center regular italic">{`"${decode(joke)}"`}</h2>
         </div>
         <Link to="/" href="/" className="btn right">Back</Link>

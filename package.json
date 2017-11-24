@@ -20,6 +20,7 @@
     "axios": "^0.17.1",
     "express": "^4.16.2",
     "he": "^1.1.1",
+    "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
@@ -27,7 +28,8 @@
     "react-router-config": "^1.0.0-beta.4",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "shortid": "^2.2.8"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
