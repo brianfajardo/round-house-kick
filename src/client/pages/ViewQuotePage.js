@@ -19,7 +19,7 @@ class ViewQuotePage extends Component {
         <div>
           <p className="ml1 mb0">ID: {id}</p>
           <p className="ml1 mt0">Categories: {category || 'not found'}</p>
-          <h2 className="center regular italic">{decode(joke)}</h2>
+          <h2 className="center regular italic">{`"${decode(joke)}"`}</h2>
         </div>
         <Link to="/" href="/" className="btn right">Back</Link>
       </div>
