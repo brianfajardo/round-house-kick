@@ -1,6 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
+import { renderRoutes } from 'react-router-config'
 
-import App from './App'
+import store from './store'
+import routes from './routes'
 
-ReactDOM.hydrate(<App />, document.getElementById('root'))
+const jsx = (
+  <Provider store={store()}>
+    <BrowserRouter>{renderRoutes(routes)}</BrowserRouter>
+  </Provider>
+)
+
+ReactDOM.hydrate(jsx, document.getElementById('root'))

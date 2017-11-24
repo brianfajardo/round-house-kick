@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux'
 
-export default combineReducers({
+const rootReducer = combineReducers({
   state: (state = {}) => state,
 })
+
+export default rootReducer

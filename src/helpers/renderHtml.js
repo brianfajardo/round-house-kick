@@ -1,9 +1,19 @@
 import React from 'react'
+import { Provider } from 'react-redux'
 import { renderToString } from 'react-dom/server'
-import App from '../client/App'
+import { StaticRouter } from 'react-router-dom'
+import { renderRoutes } from 'react-router-config'
+import routes from '../client/routes'
 
-const renderHtml = () => {
-  const reactContent = renderToString(<App />)
+const renderHtml = (store, req, context) => {
+  const jsx = (
+    <Provider store={store}>
+      <StaticRouter location={req.path} context={context}>
+        {renderRoutes(routes)}
+      </StaticRouter>
+    </Provider>
+  )
+  const reactContent = renderToString(jsx)
 
   return `
   <html>
