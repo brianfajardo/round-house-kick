@@ -6,11 +6,7 @@ import { decode } from 'he'
 import { deleteEntry } from '../actions'
 
 const propTypes = {
-  quote: PropTypes.shape({
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    joke: PropTypes.string,
-    categories: PropTypes.arrayOf(PropTypes.string),
-  }),
+  quote: PropTypes.object,
   deleteEntry: PropTypes.func,
 }
 
@@ -39,12 +35,10 @@ ViewQuotePage.propTypes = propTypes
 const mapStateToProps = (state, ownProps) => {
   // Filter the array of jokes to return the joke whose
   // id matches the id in the URL param (StaticRouter).
-  const quote = state.data.filter(
-    // joke id found in array is of type number,
-    // joke id found in URL params is of type string,
-    // using loose equality (==) should be okay here :)
-    ({ id }) => id == ownProps.match.params.id
-  )[0]
+  // joke id found in array is of type number,
+  // joke id found in URL params is of type string,
+  // using loose equality (==) should be okay here :)
+  const quote = state.data.filter(({ id }) => id == ownProps.match.params.id)[0]
 
   return { quote }
 }

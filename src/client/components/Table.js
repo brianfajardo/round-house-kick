@@ -5,13 +5,7 @@ import { Link } from 'react-router-dom'
 import { decode } from 'he'
 
 const propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      joke: PropTypes.string,
-      categories: PropTypes.arrayOf(PropTypes.string),
-    })
-  ),
+  data: PropTypes.array,
 }
 
 const Table = ({ data }) => (

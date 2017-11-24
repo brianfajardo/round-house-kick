@@ -10,13 +10,7 @@ import Table from '../components/Table'
 class HomePage extends Component {
 
   static propTypes = {
-    data: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        joke: PropTypes.string,
-        categories: PropTypes.arrayOf(PropTypes.string),
-      })
-    ),
+    data: PropTypes.array,
     fetchJokes: PropTypes.func,
     createEntry: PropTypes.func,
   }

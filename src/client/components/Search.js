@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 class Search extends Component {
 
   static propTypes = {
-    options: PropTypes.arrayOf(PropTypes.string),
+    options: PropTypes.array,
   }
 
   constructor() {
