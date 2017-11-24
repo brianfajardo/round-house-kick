@@ -2,6 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+const propTypes = {
+  staticContext: PropTypes.object,
+}
+
 const NotFoundPage = ({ staticContext = {} }) => {
   // If this component is rendered, add a pageNotFound property
   // to the staticContext object provided by StaticRouter!
@@ -17,8 +21,6 @@ const NotFoundPage = ({ staticContext = {} }) => {
   )
 }
 
-NotFoundPage.propTypes = {
-  staticContext: PropTypes.object,
-}
+NotFoundPage.propTypes = propTypes
 
 export default NotFoundPage

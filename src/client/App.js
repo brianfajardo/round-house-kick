@@ -2,6 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { renderRoutes } from 'react-router-config'
 
+const propTypes = {
+  route: PropTypes.object,
+}
+
 const App = ({ route }) => (
   <div>
     <h1 className="center">Chuck is love. Chuck is life.</h1>
@@ -11,8 +15,6 @@ const App = ({ route }) => (
   </div>
 )
 
-App.propTypes = {
-  route: PropTypes.object,
-}
+App.propTypes = propTypes
 
 export default App
