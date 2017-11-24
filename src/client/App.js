@@ -7,11 +7,11 @@ import { fetchJokes } from './actions'
 class App extends Component {
 
   componentDidMount() {
-    console.log('1. CDM')
     this.props.fetchJokes()
   }
 
   render() {
+    console.log(this.props.api)
     return (
       <div>
         <h1>Chuck FREAKING Norris</h1>
@@ -28,4 +28,6 @@ App.propTypes = {
   route: PropTypes.object,
 }
 
-export default connect(null, { fetchJokes })(App)
+const mapStateToProps = ({ api }) => ({ api })
+
+export default connect(mapStateToProps, { fetchJokes })(App)

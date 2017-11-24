@@ -10,6 +10,7 @@ module.exports = {
             ['env', { targets: { browsers: ['last 2 versions'] } }],
             'react',
           ],
+          plugins: ['transform-object-rest-spread'],
         },
       },
     ],
