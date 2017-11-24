@@ -19,6 +19,7 @@ const renderHtml = (store, req, context) => {
   <html>
     <head>
       <title>BitCine x Chuck Norris</title>
+      <link href="https://unpkg.com/ace-css/css/ace.min.css" rel="stylesheet">
     </head>
     <body>
       <div id="root">${reactContent}</div>
