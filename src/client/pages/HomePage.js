@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { fetchJokes } from '../actions'
+import * as actions from '../actions'
 
 import Search from '../components/Search'
 import CreateEntry from '../components/CreateEntry'
@@ -12,6 +12,7 @@ class HomePage extends Component {
   static propTypes = {
     fetchJokes: PropTypes.func,
     jokes: PropTypes.array,
+    createEntry: PropTypes.func,
   }
 
   constructor() {
@@ -47,6 +48,7 @@ class HomePage extends Component {
 
   handleFormSubmit(e) {
     e.preventDefault()
+    this.props.createEntry(this.state.entryInput)
     this.setState(() => ({ entryInput: '' }))
   }
 
@@ -72,4 +74,4 @@ class HomePage extends Component {
 
 const mapStateToProps = state => ({ jokes: state.api.jokes })
 
-export default connect(mapStateToProps, { fetchJokes })(HomePage)
+export default connect(mapStateToProps, actions)(HomePage)
