@@ -6,6 +6,8 @@ import { renderRoutes } from 'react-router-config'
 import routes from '../client/routes'
 
 const renderHtml = (store, req, context) => {
+
+  // JSX to be passed to renderToString method.
   const jsx = (
     <Provider store={store}>
       <StaticRouter location={req.path} context={context}>
@@ -13,6 +15,8 @@ const renderHtml = (store, req, context) => {
       </StaticRouter>
     </Provider>
   )
+
+  // Convert JSX to string to be injected into the HTML template below.
   const reactContent = renderToString(jsx)
 
   return `

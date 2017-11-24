@@ -1,15 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const SearchInput = ({ options }) => (
+const SearchInput = ({ selectOptions }) => (
   <div className="center">
-    <select className="inline">
-      {options.map(option => (
+    {/* Select options */}
+    <select>
+      {selectOptions.map(option => (
         <option value={option} key={option}>
           {option}
         </option>
       ))}
     </select>
+    {/* Search input */}
     <input
       type="search"
       placeholder="Search"
@@ -19,7 +21,7 @@ const SearchInput = ({ options }) => (
 )
 
 SearchInput.propTypes = {
-  options: PropTypes.array,
+  selectOptions: PropTypes.array,
 }
 
 export default SearchInput

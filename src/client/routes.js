@@ -1,5 +1,6 @@
 import App from './App'
 import HomePage from './pages/HomePage'
+import ViewQuotePage from './pages/ViewQuotePage'
 import NotFoundPage from './pages/NotFoundPage'
 
 // renderRoutes from the react-router-config library takes in
@@ -11,8 +12,13 @@ const routes = [
     component: App,
     routes: [
       {
-        component: HomePage,
         path: '/',
+        exact: true,
+        component: HomePage,
+      },
+      {
+        path: '/view/:id',
+        component: ViewQuotePage,
       },
       // If a path is not matched, show the NotFoundPage.
       {

@@ -14,13 +14,14 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
+    if (this.props.jokes.length) return
     this.props.fetchJokes()
   }
 
   render() {
     return (
       <div>
-        <SearchInput options={['id', 'joke', 'category']} />
+        <SearchInput selectOptions={['id', 'joke', 'category']} />
         <Table data={this.props.jokes} />
       </div>
     )

@@ -8,7 +8,7 @@ const NotFoundPage = ({ staticContext = {} }) => {
   staticContext.pageNotFound = true
 
   return (
-    <div>
+    <div className="center">
       <p>Uh Oh, page not found (404).</p>
       <Link to="/" href="/">
         Return home?
