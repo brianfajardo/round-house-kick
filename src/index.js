@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import express from 'express'
 import createStore from './client/store'
 import { renderHtml } from './helpers'
@@ -5,8 +6,11 @@ import { renderHtml } from './helpers'
 const app = express()
 const PORT = process.env.PORT || 3000
 
+// On second request, send clientside bundle.js (React rehydration)
 app.use(express.static('public'))
 
+// Glob route for server-side rendering.
+// StaticRouter controls what component will be served.
 app.get('*', (req, res) => {
   const routerContext = {}
 

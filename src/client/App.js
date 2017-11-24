@@ -7,7 +7,7 @@ import { fetchJokes } from './actions'
 class App extends Component {
 
   componentDidMount() {
-    console.log('CDM')
+    console.log('1. CDM')
     this.props.fetchJokes()
   }
 
