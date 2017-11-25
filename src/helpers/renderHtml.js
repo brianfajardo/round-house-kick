@@ -19,6 +19,8 @@ const renderHtml = (store, req, context) => {
   // Convert JSX to string to be injected into the HTML template below.
   const reactContent = renderToString(jsx)
 
+  // Passing the server Redux store to the client for
+  // it to be used as initial state on rehydration.
   return `
   <html>
     <head>
@@ -27,6 +29,7 @@ const renderHtml = (store, req, context) => {
     </head>
     <body>
       <div id="root">${reactContent}</div>
+      <script>window.INITIAL_REDUX_STATE = ${JSON.stringify(store.getState())}</script>
       <script src="bundle.js"></script>
     </body>
   </html>

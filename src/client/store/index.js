@@ -9,3 +9,4 @@ const middleware = applyMiddleware(reduxThunk)
 
 export default (initialState = {}) =>
   createStore(rootReducer, initialState, composeEnhancers(middleware))
+

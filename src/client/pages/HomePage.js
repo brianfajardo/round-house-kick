@@ -16,7 +16,8 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    if (this.props.data.length) return
+    // hacky
+    if (this.props.data) return
     this.props.fetchJokes()
   }
 
