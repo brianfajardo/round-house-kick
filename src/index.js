@@ -1,7 +1,7 @@
 import 'babel-polyfill'
 import express from 'express'
 import createStore from './client/store'
-import { renderHtml } from './helpers'
+import { renderHtml, initComponentRequests } from './helpers'
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -11,11 +11,17 @@ app.use(express.static('public'))
 
 // Glob route for server-side rendering.
 // StaticRouter controls what component will be served.
-app.get('*', (req, res) => {
+app.get('*', async (req, res) => {
   const routerContext = {}
 
   // Initializing server store.
   const store = createStore()
+
+  // Initialize component AJAX requests, 'prefilling' Redux state.
+  const requests = initComponentRequests(req, store)
+
+  // Resolving component requests
+  await Promise.all(requests)
 
   // Returns JSX that has been rendered to string.
   const content = renderHtml(store, req, routerContext)

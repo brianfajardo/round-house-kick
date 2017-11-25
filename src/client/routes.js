@@ -14,7 +14,8 @@ const routes = [
       {
         path: '/',
         exact: true,
-        component: HomePage,
+        component: HomePage.component,
+        initData: HomePage.initData,
       },
       {
         path: '/view/:id',

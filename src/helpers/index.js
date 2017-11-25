@@ -1,3 +1,4 @@
 import renderHtml from './renderHtml'
+import initComponentRequests from './initComponentRequests'
 
-export { renderHtml }
+export { renderHtml, initComponentRequests }
