@@ -23,7 +23,8 @@ const routes = [
       },
       // If a path is not matched, show the NotFoundPage.
       {
-        component: NotFoundPage,
+        component: NotFoundPage.component,
+        initData: NotFoundPage.initData
       },
     ],
   },

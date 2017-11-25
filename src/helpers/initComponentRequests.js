@@ -12,7 +12,8 @@ import routes from '../client/routes'
 
 // Will return an array of unresolved Promises.
 
-export default (req, store) =>
-  matchRoutes(routes, req.path).map(
+export default (req, store) => {
+  return matchRoutes(routes, req.path).map(
     ({ route }) => (route.initData ? route.initData(store) : null)
   )
+}

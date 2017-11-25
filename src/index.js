@@ -1,13 +1,18 @@
 import 'babel-polyfill'
 import express from 'express'
+import helmet from 'helmet'
+import compression from 'compression'
 import createStore from './client/store'
 import { renderHtml, initComponentRequests } from './helpers'
 
 const app = express()
 const PORT = process.env.PORT || 3000
 
-// On second request, send clientside bundle.js (React rehydration)
-app.use(express.static('public'))
+app
+  .use(helmet())
+  // On clients' second request, send client bundle.js (rehydrate).
+  .use(express.static('public'))
+  .use(compression())
 
 // Glob route for server-side rendering.
 // StaticRouter controls what component will be served.

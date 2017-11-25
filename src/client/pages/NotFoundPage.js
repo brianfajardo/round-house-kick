@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { fetchJokes } from '../actions'
 
 const propTypes = {
   staticContext: PropTypes.object,
@@ -23,4 +24,7 @@ const NotFoundPage = ({ staticContext = {} }) => {
 
 NotFoundPage.propTypes = propTypes
 
-export default NotFoundPage
+export default {
+  component: NotFoundPage,
+  initData: store => store.dispatch(fetchJokes())
+}
