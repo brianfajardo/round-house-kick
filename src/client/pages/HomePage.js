@@ -21,6 +21,7 @@ class HomePage extends Component {
   }
 
   render() {
+    console.log('FILTERS', this.props.filters)
     return (
       <div>
         <Search options={['id', 'joke', 'categories']} />
@@ -33,6 +34,7 @@ class HomePage extends Component {
 
 const mapStateToProps = ({ data, filters }) => ({
   data: filterSort(data, filters),
+  filters
 })
 
 export default connect(mapStateToProps, { fetchJokes })(HomePage)

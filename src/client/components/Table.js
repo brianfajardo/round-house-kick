@@ -38,4 +38,6 @@ const Table = ({ data, setSortBy }) => (
 
 Table.propTypes = propTypes
 
+const mapStateToProps = ({ filter }) => ({ filter })
+
 export default connect(null, { setSortBy })(Table)

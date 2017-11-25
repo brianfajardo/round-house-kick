@@ -7,7 +7,10 @@ import {
 const initialState = {
   searchQuery: '',
   searchFilter: 'id',
-  sortBy: '',
+  sortBy: {
+    property: '',
+    ascending: false
+  }
 }
 
 export default (state = initialState, action) => {
@@ -25,7 +28,11 @@ export default (state = initialState, action) => {
     case SET_SORT_BY_FILTER:
       return {
         ...state,
-        sortBy: action.payload,
+        sortBy: {
+          ...state.sortBy,
+          property: action.payload,
+          ascending: !state.sortBy.ascending
+        },
       }
     default:
       return state

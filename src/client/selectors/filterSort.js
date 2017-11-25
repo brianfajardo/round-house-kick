@@ -28,10 +28,14 @@ export default (data, { searchQuery, searchFilter, sortBy }) => {
       })
       // Step 2: Sort returned filtered results by the sortBy filter.
       .sort((a, b) => {
-        if (sortBy === 'id') {
-          return a.id < b.id ? -1 : 1
-        } else if (sortBy === 'joke') {
-          return a.joke < b.joke ? -1 : 1
+        if (sortBy.property === 'id') {
+          return sortBy.ascending
+            ? a.id < b.id ? -1 : 1 // if true, sort in an ascending order (least to greatest)
+            : a.id < b.id ? 1 : -1 // else, sort in descending order!
+        } else if (sortBy.property === 'joke') {
+          return sortBy.ascending
+            ? a.joke < b.joke ? -1 : 1
+            : a.joke < b.joke ? 1 : -1
         }
       })
   )
