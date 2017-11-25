@@ -12,7 +12,7 @@ import {
 
 // Fetching multiple random jokes
 const URL = 'https://api.icndb.com/jokes/random'
-const quantity = 10
+const quantity = 550
 
 // Data related action creators
 

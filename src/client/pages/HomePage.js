@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { fetchJokes } from '../actions'
+import filterSort from '../selectors/filterSort'
 
 import Search from '../components/Search'
 import CreateEntry from '../components/CreateEntry'
@@ -20,10 +21,9 @@ class HomePage extends Component {
   }
 
   render() {
-    console.log('FILTERS:', this.props.filters)
     return (
       <div>
-        <Search options={['id', 'joke', 'category']} />
+        <Search options={['id', 'joke', 'categories']} />
         <CreateEntry />
         <Table data={this.props.data} />
       </div>
@@ -31,6 +31,8 @@ class HomePage extends Component {
   }
 }
 
-const mapStateToProps = ({ data, filters }) => ({ data, filters })
+const mapStateToProps = ({ data, filters }) => ({
+  data: filterSort(data, filters),
+})
 
 export default connect(mapStateToProps, { fetchJokes })(HomePage)

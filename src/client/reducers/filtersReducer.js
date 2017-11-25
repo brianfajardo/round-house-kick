@@ -6,8 +6,8 @@ import {
 
 const initialState = {
   searchQuery: '',
-  searchFilter: '',
-  sortBy: 'id',
+  searchFilter: 'id',
+  sortBy: '',
 }
 
 export default (state = initialState, action) => {

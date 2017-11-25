@@ -13,35 +13,29 @@ class Search extends Component {
 
   constructor() {
     super()
-
-    this.state = {
-      searchInput: '',
-      searchOption: 'id',
-    }
-
     this.handleSearchInput = this.handleSearchInput.bind(this)
     this.handleSearchOptions = this.handleSearchOptions.bind(this)
   }
 
   handleSearchInput(e) {
     this.props.setSearchQuery(e.target.value)
-    this.setState({ searchInput: e.target.value })
   }
 
   handleSearchOptions(e) {
     this.props.setSearchFilter(e.target.value)
-    this.setState({ searchOption: e.target.value })
   }
 
   render() {
+    const { options, searchQuery, searchFilter } = this.props
     return (
       <div className="center col col-12">
         {/* Select options */}
         <select
+          value={searchFilter}
           onChange={this.handleSearchOptions}
           className="select center col-2 inline"
         >
-          {this.props.options.map(option => (
+          {options.map(option => (
             <option value={option} key={option}>
               {option}
             </option>
@@ -50,9 +44,9 @@ class Search extends Component {
         {/* Search input */}
         <input
           type="search"
-          value={this.state.searchInput}
+          value={searchQuery}
           onChange={this.handleSearchInput}
-          placeholder={`Searching by ${this.state.searchOption}`}
+          placeholder={`Searching by ${searchFilter}`}
           className="input center col-3 inline"
         />
       </div>
@@ -60,4 +54,11 @@ class Search extends Component {
   }
 }
 
-export default connect(null, { setSearchQuery, setSearchFilter })(Search)
+const mapStateToProps = ({ filters }) => ({
+  searchFilter: filters.searchFilter,
+  searchQuery: filters.searchQuery,
+})
+
+export default connect(mapStateToProps, { setSearchQuery, setSearchFilter })(
+  Search
+)
