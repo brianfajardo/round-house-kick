@@ -10,8 +10,7 @@ const PORT = process.env.PORT || 3000
 
 app
   .use(helmet())
-  // On clients' second request, send client bundle.js (rehydrate).
-  .use(express.static('public'))
+  .use(express.static('public')) // bundle.js to rehydrate client
   .use(compression())
 
 // Glob route for server-side rendering.
@@ -34,8 +33,7 @@ app.get('*', async (req, res) => {
   // When NotFoundPage component is rendered, pageNotFound property
   // is added to the routerContext object provided by StaticRouter.
   // See NotFoundPage (in /client/pages folder).
-  if (routerContext.pageNotFound) res.status(404)
-  if (routerContext.url) return res.redirect(routerContext.url)
+  if (routerContext.pageNotFound) res.status(400)
 
   res.status(200).send(content)
 })
