@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import * as actions from '../actions'
+import { fetchJokes } from '../actions'
 
 import Search from '../components/Search'
 import CreateEntry from '../components/CreateEntry'
@@ -12,12 +12,6 @@ class HomePage extends Component {
   static propTypes = {
     data: PropTypes.array,
     fetchJokes: PropTypes.func,
-    createEntry: PropTypes.func,
-  }
-
-  constructor() {
-    super()
-    this.onFormSubmit = this.onFormSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -25,21 +19,18 @@ class HomePage extends Component {
     this.props.fetchJokes()
   }
 
-  onFormSubmit(entry, categories) {
-    this.props.createEntry(entry, categories)
-  }
-
   render() {
+    console.log('FILTERS:', this.props.filters)
     return (
       <div>
         <Search options={['id', 'joke', 'category']} />
-        <CreateEntry onFormSubmit={this.onFormSubmit} />
+        <CreateEntry />
         <Table data={this.props.data} />
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ data }) => ({ data })
+const mapStateToProps = ({ data, filters }) => ({ data, filters })
 
-export default connect(mapStateToProps, actions)(HomePage)
+export default connect(mapStateToProps, { fetchJokes })(HomePage)

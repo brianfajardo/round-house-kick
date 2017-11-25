@@ -1,7 +1,7 @@
 import {
   SET_SEARCH_FILTER,
   SET_SORT_BY_FILTER,
-  USER_SEARCH_QUERY,
+  SET_SEARCH_QUERY,
 } from '../actions/actionTypes'
 
 const initialState = {
@@ -12,7 +12,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case USER_SEARCH_QUERY:
+    case SET_SEARCH_QUERY:
       return {
         ...state,
         searchQuery: action.payload,

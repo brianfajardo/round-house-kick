@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { setSearchFilter, setSearchQuery } from '../actions'
 
 class Search extends Component {
 
   static propTypes = {
     options: PropTypes.array,
+    setSearchFilter: PropTypes.func,
+    setSearchQuery: PropTypes.func,
   }
 
   constructor() {
@@ -20,13 +24,13 @@ class Search extends Component {
   }
 
   handleSearchInput(e) {
-    e.persist()
-    this.setState(() => ({ searchInput: e.target.value }))
+    this.props.setSearchQuery(e.target.value)
+    this.setState({ searchInput: e.target.value })
   }
 
   handleSearchOptions(e) {
-    e.persist()
-    this.setState(() => ({ searchOption: e.target.value }))
+    this.props.setSearchFilter(e.target.value)
+    this.setState({ searchOption: e.target.value })
   }
 
   render() {
@@ -56,4 +60,4 @@ class Search extends Component {
   }
 }
 
-export default Search
+export default connect(null, { setSearchQuery, setSearchFilter })(Search)

@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { createEntry } from '../actions'
 
 class CreateEntry extends Component {
 
   static propTypes = {
-    onFormSubmit: PropTypes.func,
+    createEntry: PropTypes.func,
   }
 
   constructor() {
@@ -21,13 +23,11 @@ class CreateEntry extends Component {
   }
 
   handleEntryInput(e) {
-    e.persist()
-    this.setState(() => ({ entryInput: e.target.value }))
+    this.setState({ entryInput: e.target.value })
   }
 
   handleEntryCategories(e) {
-    e.persist()
-    this.setState(() => ({ entryCategories: e.target.value }))
+    this.setState({ entryCategories: e.target.value })
   }
 
   handleFormSubmit(e) {
@@ -35,8 +35,9 @@ class CreateEntry extends Component {
     e.preventDefault()
     // Check that the input contains text.
     if (entryInput.trim()) {
-      this.props.onFormSubmit(entryInput, entryCategories)
-      this.setState(() => ({ entryInput: '', entryCategories: '' }))
+      this.props.createEntry(entryInput, entryCategories)
+      // Clear values after submitting entry!
+      this.setState({ entryInput: '', entryCategories: '' })
     }
   }
 
@@ -65,4 +66,4 @@ class CreateEntry extends Component {
   }
 }
 
-export default CreateEntry
+export default connect(null, { createEntry })(CreateEntry)

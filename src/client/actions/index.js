@@ -7,7 +7,7 @@ import {
   DELETE_ENTRY,
   SET_SEARCH_FILTER,
   SET_SORT_BY_FILTER,
-  USER_SEARCH_QUERY,
+  SET_SEARCH_QUERY,
 } from './actionTypes'
 
 // Fetching multiple random jokes
@@ -37,17 +37,17 @@ export const deleteEntry = id => ({
 
 // Filter related action creators
 
+export const setSearchQuery = query => ({
+  type: SET_SEARCH_QUERY,
+  payload: query,
+})
+
 export const setSearchFilter = filter => ({
   type: SET_SEARCH_FILTER,
   payload: filter,
 })
 
-export const setSortByFilter = filter => ({
+export const setSortBy = filter => ({
   type: SET_SORT_BY_FILTER,
   payload: filter,
-})
-
-export const userSearchQuery = query => ({
-  type: USER_SEARCH_QUERY,
-  payload: query,
 })
